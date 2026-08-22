@@ -10,4 +10,6 @@ RUN npm install -g @deepseek-ai/dsh && \
 EXPOSE 3000
 
 # dsh écoute sur 127.0.0.1:3080 (sécurité), socat forward vers 0.0.0.0:3000
-CMD socat TCP-LISTEN:3000,fork,reuseaddr TCP:127.0.0.1:3080 & dsh web --no-open --port 3080 --host 127.0.0.1
+# --trusted-host autorise harness.kechlab.com à appeler l'API (browser-trust fence)
+CMD socat TCP-LISTEN:3000,fork,reuseaddr TCP:127.0.0.1:3080 & \
+    dsh web --no-open --port 3080 --host 127.0.0.1 --trusted-host harness.kechlab.com --trusted-host localhost:3000
