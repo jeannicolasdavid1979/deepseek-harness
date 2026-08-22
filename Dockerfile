@@ -12,7 +12,7 @@ RUN npm install -g pnpm@11.7.0
 COPY . .
 
 # Initialiser git (le build script a besoin de git rev-parse HEAD)
-RUN git init && git add -A && git commit -m "build" --allow-empty
+RUN git init && git config user.email "build@localhost" && git config user.name "Build" && git add -A && git commit -m "build" --allow-empty
 
 # Installer les dépendances
 RUN pnpm install --frozen-lockfile
