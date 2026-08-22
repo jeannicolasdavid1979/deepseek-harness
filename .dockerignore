@@ -1,0 +1,9 @@
+.git
+node_modules
+*.log
+docs
+examples
+website
+.github
+.claude
+.agents
