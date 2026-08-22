@@ -2,7 +2,9 @@ FROM node:22-slim
 
 WORKDIR /app
 
-# DeepSeek Harness via npx (package npm publié, pas besoin de build from source)
+# Installer le package pendant le build (une seule fois, pas à chaque démarrage)
+RUN npm install -g @deepseek-ai/dsh
+
 EXPOSE 3080
 
-CMD ["npx", "@deepseek-ai/dsh", "web", "--no-open"]
+CMD ["dsh", "web", "--no-open"]
